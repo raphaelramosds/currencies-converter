@@ -10,7 +10,7 @@ export default function Home(props) {
   return (
     <>
       {cotacoes.map((cotacao) => 
-        <Display venda={cotacao.ask} nome={cotacao.name}/>
+        <Display key={cotacao.name} venda={cotacao.ask} nome={cotacao.name}/>
       )}
       <Conversao moedas={cotacoes}/>
     </>

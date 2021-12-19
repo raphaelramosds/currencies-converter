@@ -2,53 +2,51 @@ import { useEffect, useState } from "react";
 
 export default function Conversao(props) {
 
-    const [cotacao, setCotacao] = useState({
-        valor: 0, // valor digitado
-        codigo: 'USD' // moeda que quer converter
-    });
-
+    const [codigo, setCodigo] = useState('USD');
+    const [valorReal, setValorReal] = useState(0);
     const [valorConvertido, setValorConvertido] = useState(0);
 
-    function converter() {
-        const valorReal = document.getElementsByClassName('valorReal')[0].value;
-        const codigoMoeda = document.getElementsByClassName('codigoMoedas')[0].value;
+    // renderize toda vez que o usuário digita o valor em real
+    useEffect(() => {
+        handleChangeConvert();
+        return () => {
+            setValorConvertido(0);
+        }
+    }, [valorReal])
 
-        console.log(valorReal)
-        // evitar valores vazios
-        if (!valorReal) {
-            cotacao.valor = 0
-        };
-
-        // atualizar estado
-        setCotacao({
-            valor: valorReal,
-            codigo: codigoMoeda
-        });
-
-        console.log(`Valor do estado ${cotacao.valor}`)
+    function handleChangeConvert() {
 
         // filtrar props pelo codigo da moeda selecionada
-        const cotacaoFiltrada = props.moedas.filter( (moeda) => {
-            return moeda.code === cotacao.codigo
+        const moedaFiltrada = props.moedas.filter( (moeda) => {
+            return moeda.code === codigo
         });
 
         // aplicar conversão 
-        setValorConvertido( parseFloat(cotacao.valor)/parseFloat(cotacaoFiltrada[0].ask))
+        setValorConvertido( valorReal/parseFloat(moedaFiltrada[0].ask))
     }
 
     return (
         <div className="conversao">
             <div className="formConversao">
-                <form onChange={converter}>
-                    <input className='valorReal' placeholder="Valor em Real"/>
-                    <select className='codigoMoedas'>
+                <form onChange={handleChangeConvert}>
+                    <input 
+                        type='number' 
+                        placeholder="Valor em Real"
+                        onChange={({target})=>{
+                            setValorReal(parseFloat(target.value))
+                        }}
+                    />
+
+                    <select onChange={({target}) => {
+                        setCodigo(target.value)
+                    }}>
                         <option value='USD'>Dólar</option>
                         <option value='EUR'>Euro</option>
                     </select>
                 </form>
             </div>
-            <div className="valorConvertido">
-                <span> {!valorConvertido ? 0 : valorConvertido } {cotacao.codigo}</span>
+            <div className="displayValorConvertido">
+                <span> {!valorConvertido ? 0 : valorConvertido } {codigo}</span>
             </div>
         </div>
     );
