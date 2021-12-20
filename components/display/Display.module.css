@@ -1,3 +1,11 @@
 .display {
-    padding: 5em;
+    padding: 2em;
+}
+
+.display .precoVenda {
+    font-size: x-large;
+}
+
+.display .nomeMoeda {
+    font-size: xx-small;
 }

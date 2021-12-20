@@ -1,4 +1,6 @@
+import Head from 'next/head';
 import { useEffect, useState } from 'react';
+
 import Display from '../components/display/Display';
 import Conversao from '../components/conversao/Conversao';
 
@@ -11,15 +13,23 @@ export default function Home(props) {
 
   return (
     <>
-      <div className='box'>
-        {cotacoes.map((cotacao) => 
-          <Display key={cotacao.name} venda={cotacao.ask} nome={cotacao.name} code={cotacao.code}/>
-        )}
+      <Head>
+        <title>Cotações de hoje</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+
+      <div className='container'>
+        <div className='box cotacoes'>
+          {cotacoes.map((cotacao) =>
+            <Display key={cotacao.name} venda={cotacao.ask} nome={cotacao.name} code={cotacao.code} />
+          )}
+        </div>
+
+        <div className='box conversao'>
+          <Conversao moedas={cotacoes} />
+        </div>
       </div>
 
-      <div className='box'>
-        <Conversao moedas={cotacoes}/>
-      </div>
     </>
   );
 }

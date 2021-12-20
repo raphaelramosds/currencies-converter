@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Class from './Display.module.css';
+import Style from './Display.module.css';
 
 
 export default function Display(props){
@@ -11,11 +11,11 @@ export default function Display(props){
     });
 
     return (
-        <div className={Class.display}>
-            <div className='nomeMoeda'>
+        <div className={Style.display}>
+            <div className={Style.nomeMoeda}>
                 <b>{cotacao.nome}</b>
             </div>
-            <div className='precoVenda'>
+            <div className={Style.precoVenda}>
                 <span>{cotacao.venda} {cotacao.code}</span>
             </div>
         </div>

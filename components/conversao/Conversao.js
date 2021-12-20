@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Style from './Conversao.module.css';
 
 export default function Conversao(props) {
 
@@ -19,22 +20,25 @@ export default function Conversao(props) {
         });
 
         // aplicar conversão 
-        setValorConvertido( valorReal/parseFloat(moedaFiltrada[0].ask))
+        setValorConvertido( (valorReal/parseFloat(moedaFiltrada[0].ask)).toFixed(2))
     }
 
     return (
         <div className="conversao">
-            <div className="formConversao">
+            <div className={Style.formConversao}>
                 <form onChange={handleChangeConvert}>
-                    <input 
+                    <input
+                        className={Style.input} 
                         type='number' 
-                        placeholder="Valor em Real"
+                        placeholder="R$"
                         onChange={({target})=>{
                             setValorReal(parseFloat(target.value))
                         }}
                     />
 
-                    <select onChange={({target}) => {
+                    <select 
+                        className={Style.select}
+                        onChange={({target}) => {
                         setCodigo(target.value)
                     }}>
                         <option value='USD'>Dólar</option>
@@ -42,7 +46,7 @@ export default function Conversao(props) {
                     </select>
                 </form>
             </div>
-            <div className="displayValorConvertido">
+            <div className={Style.displayValorConvertido}>
                 <span> {!valorConvertido ? 0 : valorConvertido } {codigo}</span>
             </div>
         </div>
