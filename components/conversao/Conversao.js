@@ -9,10 +9,7 @@ export default function Conversao(props) {
     // renderize toda vez que o usuário digita o valor em real
     useEffect(() => {
         handleChangeConvert();
-        return () => {
-            setValorConvertido(0);
-        }
-    }, [valorReal])
+    }, [valorReal, codigo])
 
     function handleChangeConvert() {
 

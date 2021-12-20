@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import Display from '../components/display/Display';
 import Conversao from '../components/conversao/Conversao';
 
+
+
 export default function Home(props) {
 
   const temp = props.data;
@@ -9,10 +11,15 @@ export default function Home(props) {
 
   return (
     <>
-      {cotacoes.map((cotacao) => 
-        <Display key={cotacao.name} venda={cotacao.ask} nome={cotacao.name}/>
-      )}
-      <Conversao moedas={cotacoes}/>
+      <div className='box'>
+        {cotacoes.map((cotacao) => 
+          <Display key={cotacao.name} venda={cotacao.ask} nome={cotacao.name} code={cotacao.code}/>
+        )}
+      </div>
+
+      <div className='box'>
+        <Conversao moedas={cotacoes}/>
+      </div>
     </>
   );
 }
