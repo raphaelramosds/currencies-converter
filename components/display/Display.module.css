@@ -2,10 +2,24 @@
     padding: 2em;
 }
 
-.display .precoVenda {
+.display .sellPrice {
     font-size: x-large;
 }
 
-.display .nomeMoeda {
-    font-size: xx-small;
+.display .currencyName {
+    font-size: small;
+    margin-top: 1em;
+    opacity: .6;
+}
+
+.display .currencyIcon {
+    padding: 2em;
+    height: 100px;
+    width: 100px;
+
+    border-radius: 100%;
+    border: 4px solid #E02059;
+    background-color: #002A3B;
+    color: white;
+
 }

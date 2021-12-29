@@ -1,22 +1,26 @@
 import { useState } from "react";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { icons } from "./data/currencies-icons.js";
 import Style from './Display.module.css';
 
-
-export default function Display(props){
-    const [cotacao, setCotacao] = useState({
-        nome: props.nome,
-        venda: props.venda,
-        code: props.code
+export default function Display(props) {
+    const [currency, setCurrency] = useState({
+        name: props.name,
+        sell: props.sell,
+        code: props.code,
+        iconIndex: props.iconIndex
 
     });
 
     return (
         <div className={Style.display}>
-            <div className={Style.nomeMoeda}>
-                <b>{cotacao.nome}</b>
+            <FontAwesomeIcon icon={icons[currency.iconIndex]} className={Style.currencyIcon}/>
+            <div className={Style.currencyName}>
+                {currency.name}
             </div>
-            <div className={Style.precoVenda}>
-                <span>{cotacao.venda} {cotacao.code}</span>
+            <div className={Style.sellPrice}>
+                <span>{currency.sell} {currency.code}</span>
             </div>
         </div>
     );

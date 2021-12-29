@@ -1,0 +1,25 @@
+.conversion .formConversao .input, .select {
+    padding: 1em;
+    border-radius: 1em;
+    border: 1px solid;
+    border-color: #00374D;
+    background-color: #00374D;
+    color: white;
+}
+
+.input::placeholder {
+    color: white;
+}
+
+.conversion .formConversao .select {
+    margin-left: .7em;
+}
+
+.conversion .convertedValue {
+    margin-top: 2em;
+}
+
+.conversion .formConversao .input:focus {
+    transition: 0.2s all;
+    padding-left: 10px;
+}

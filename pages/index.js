@@ -2,12 +2,12 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
 import Display from '../components/display/Display';
-import Conversao from '../components/conversao/Conversao';
+import Conversion from '../components/conversion/Conversion';
+
 
 export default function Home(props) {
-
   const temp = props.data;
-  const cotacoes = Object.values(temp);
+  const currencies = Object.values(temp);
 
   return (
     <>
@@ -17,17 +17,18 @@ export default function Home(props) {
       </Head>
 
       <div className='container'>
-        <div className='box cotacoes'>
-          {cotacoes.map((cotacao) =>
-            <Display key={cotacao.name} venda={cotacao.ask} nome={cotacao.name} code={cotacao.code} />
-          )}
+        <div className="box currencies">
+          {currencies.map((currency, index) =>
+            <Display key={currency.name}
+              sell={currency.ask}
+              name={currency.name}
+              code={currency.code}
+              iconIndex={index} />)}
         </div>
-
-        <div className='box conversao'>
-          <Conversao moedas={cotacoes} />
+        <div className="box conversion">
+          <Conversion currencies={currencies} />
         </div>
       </div>
-
     </>
   );
 }

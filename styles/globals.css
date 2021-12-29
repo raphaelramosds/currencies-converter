@@ -9,6 +9,9 @@ body {
   font-family: 'Lato';
   text-align: center;
   height: 80vh;
+  background-color: #002A3B;
+  color: white
+
 }
 
 .container {
@@ -16,12 +19,10 @@ body {
   border-radius: 15px;
 }
 
-
-.cotacoes {
+.currencies {
   display: flex;
   flex-wrap: wrap;
 }
-
 
 a {
   color: inherit;
