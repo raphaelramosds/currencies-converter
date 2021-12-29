@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react';
 import Display from '../components/display/Display';
 import Conversao from '../components/conversao/Conversao';
 
-
-
 export default function Home(props) {
 
   const temp = props.data;
